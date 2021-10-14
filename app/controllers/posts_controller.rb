@@ -23,15 +23,15 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post::Getter.new(params[:id]).call
+    @post = find_post
   end
 
   def edit
-    @post = Post::Getter.new(params[:id]).call
+    @post = find_post
   end
 
   def update
-    @post = Post::Getter.new(params[:id]).call
+    @post = find_post
 
     if @post.update(post_params)
       flash[:success] = 'Post updated successfully'
@@ -42,13 +42,17 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post::Getter.new(params[:id]).call
+    @post = find_post
     @post.destroy
     flash[:success] = 'Post deleted successfully'
     redirect_to action: 'index'
   end
 
   private
+
+  def find_post
+    Post::Getter.new(params[:id]).call
+  end
 
   def post_params
     params.require(:post).permit(:title, :content)

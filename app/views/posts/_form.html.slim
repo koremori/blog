@@ -1,0 +1,11 @@
+= simple_form_for(@post) do |f|
+
+  .form-inputs
+    = f.input :title
+
+    = f.label :content
+    br
+    = f.text_area :content
+
+  .form-actions
+    = f.button :submit
