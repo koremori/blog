@@ -5,21 +5,28 @@ h1 All Posts
       .flash
         = message
 
+- if current_user
+  - if current_user.superadmin?
+      => link_to 'Admin Panel', admin_root_path
+
 table
   thead
     tr
       th Title
       th Content
       th Likes
-      th
-      th
-      th
+      th Comments
+      th Show
+      th Edit
+      th Delete
 
   tbody
     - @posts.each do |post|
       tr
         td = post.title
         td = post.content
+        td = post.likes.count
+        td = post.comments.count
         td = link_to 'Show', post
         - if current_user
           - if current_user.id == post.user_id

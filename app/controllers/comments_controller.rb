@@ -3,8 +3,9 @@
 class CommentsController < ApplicationController
   def create
     @post = find_post
-    @comment = @post.comments.new(comment_params.merge(user_id: current_user))
+    @comment = @post.comments.create(comment_params)
     @comment.user = current_user
+
     if @comment.save!
       flash[:success] = 'Comment created successfully'
     else
@@ -27,6 +28,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:content, :user_id)
+    params.require(:comment).permit(:content)
   end
 end

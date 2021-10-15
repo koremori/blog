@@ -1,6 +1,13 @@
-p
- - @post.comments.each do |comment|
-     => user.email
-     '|
-     =< comment.content
-     br
+table
+  thead
+    tr
+      th User
+      th Comment
+
+  tbody
+    - @post.comments.each do |comment|
+      tr
+        td = comment.user
+        td = comment.content
+
+br
