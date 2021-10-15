@@ -16,7 +16,7 @@ class PostsController < ApplicationController
 
     if @post.save!
       flash[:success] = 'Post created successfully'
-      redirect_to :new
+      redirect_to @post
     else
       render :new
     end
@@ -28,10 +28,12 @@ class PostsController < ApplicationController
 
   def edit
     @post = find_post
+    owner?
   end
 
   def update
     @post = find_post
+    owner?
 
     if @post.update(post_params)
       flash[:success] = 'Post updated successfully'
@@ -43,6 +45,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post = find_post
+    owner?
     @post.destroy
     flash[:success] = 'Post deleted successfully'
     redirect_to action: 'index'
@@ -52,6 +55,13 @@ class PostsController < ApplicationController
 
   def find_post
     Post::Getter.new(params[:id]).call
+  end
+
+  def owner?
+    unless current_user == @post.user
+      redirect_back fallback_location: root_path
+      flash[:alert] = 'User is not owner'
+    end
   end
 
   def post_params
