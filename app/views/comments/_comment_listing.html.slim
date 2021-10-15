@@ -7,7 +7,7 @@ table
   tbody
     - @post.comments.each do |comment|
       tr
-        td = comment.user
+        td = comment.user_id
         td = comment.content
 
 br
