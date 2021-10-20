@@ -72,6 +72,8 @@ GEM
     arbre (1.4.0)
       activesupport (>= 3.0.0, < 6.2)
       ruby2_keywords (>= 0.0.2, < 1.0)
+    autoprefixer-rails (10.3.3.0)
+      execjs (~> 2)
     bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.9.1)
@@ -90,6 +92,7 @@ GEM
     diff-lcs (1.4.4)
     docile (1.4.0)
     erubi (1.10.0)
+    execjs (2.8.1)
     factory_bot (6.2.0)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.2.0)
@@ -140,6 +143,10 @@ GEM
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (1.0.2)
+    material_icons (2.2.1)
+      railties (>= 3.2)
+    materialize-sass (1.0.0.1)
+      autoprefixer-rails (>= 6.0.3)
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.14.4)
@@ -278,6 +285,8 @@ DEPENDENCIES
   faker
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  material_icons
+  materialize-sass (~> 1.0.0)
   pg (~> 1.1)
   pry
   puma (~> 5.0)

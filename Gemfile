@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -14,6 +16,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'activeadmin'
 gem 'devise'
+gem 'material_icons'
+gem 'materialize-sass', '~> 1.0.0'
 gem 'simple_form'
 gem 'slim-rails'
 
